@@ -1,0 +1,27 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: order-service
+  config:
+      import: "configserver:http://localhost:8888"
+  profiles:
+      active: dev
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud: DEBUG
+      boot:
+        context:
+          config: DEBUG
