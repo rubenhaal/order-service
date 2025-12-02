@@ -6,3 +6,8 @@ spring:
 order-service:
   welcome-message: "Mensaje de prueba"
   environment: "test"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
