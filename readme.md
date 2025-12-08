@@ -71,6 +71,35 @@ management:
     health:
       show-details: always
 ```
+## Observability
+
+### Structured JSON logs
+The service outputs structured logs in JSON format (Logback + logstash encoder).  
+Each log entry includes common fields (timestamp, level, logger, thread) and custom fields such as `app` and `env`.
+
+### Request correlation (X-Trace-Id)
+
+Each incoming HTTP request is assigned a trace identifier:
+
+- If the client sends `X-Trace-Id`, the service reuses it.
+- If it is missing, the service generates a new one.
+- The value is returned in the response header `X-Trace-Id`.
+
+This enables log correlation across requests and services.
+
+### Metrics (Actuator)
+
+Metrics are exposed via Spring Boot Actuator:
+
+- `GET /actuator/metrics`
+- `GET /actuator/metrics/http.server.requests`
+
+Example (PowerShell):
+
+```powershell
+curl.exe -i http://localhost:8081/api/order/demo
+curl.exe -i -H "X-Trace-Id: demo-123" http://localhost:8081/api/order/demo
+```
 
 ## Run locally
 
@@ -160,6 +189,37 @@ management:
   endpoint:
     health:
       show-details: always
+```
+
+
+## Beobachtbarkeit
+
+### Strukturierte JSON-Logs
+Der Service gibt strukturierte Logs im JSON-Format aus (Logback + logstash encoder).  
+Jeder Log-Eintrag enthält gängige Felder (Zeitstempel, Level, Logger, Thread) sowie benutzerdefinierte Felder wie `app` und `env`.
+
+### Request-Korrelation (X-Trace-Id)
+
+Jede eingehende HTTP-Anfrage erhält eine Trace-ID:
+
+- Wenn der Client `X-Trace-Id` sendet, übernimmt der Service diesen Wert.
+- Wenn der Header fehlt, erzeugt der Service eine neue Trace-ID.
+- Der Wert wird im Response-Header `X-Trace-Id` zurückgegeben.
+
+Damit lassen sich Logs über Requests und Services hinweg korrelieren.
+
+### Metriken (Actuator)
+
+Metriken werden über Spring Boot Actuator bereitgestellt:
+
+- `GET /actuator/metrics`
+- `GET /actuator/metrics/http.server.requests`
+
+Beispiel  (PowerShell):
+
+```powershell
+curl.exe -i http://localhost:8081/api/order/demo
+curl.exe -i -H "X-Trace-Id: demo-123" http://localhost:8081/api/order/demo
 ```
 
 ## Lokal ausführen
