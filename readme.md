@@ -120,6 +120,33 @@ Open-api service :
 http://localhost:8081/swagger-ui/index.html
 http://localhost:8081/v3/api-docs
 
+## Local CI pipeline(emulated)
+This project includes a simple local pipeline to emulate a CI/CD setup (build, test, and run with different profiles) without needing Jenkins or Azure DevOps.
+
+The scripts are located in the `ci/` folder and are intended to be run from the project root.
+Example commands (PowerShell on Windows):
+
+Build only:
+
+```powershell
+.\ci\build.ps1
+```
+Run all pipeline steps (build + test):
+
+```
+.\ci\pipeline.ps1
+```
+Run the service with the dev profile:
+```
+.\ci\run-dev.ps1
+```
+
+Run the service with the prod profile:
+```
+.\ci\run-prod.ps1
+```
+The scripts use the environment variable SPRING_PROFILES_ACTIVE to select the active profile (for example dev or prod). This simulates how different environments would be configured in a real CI/CD pipeline.
+
 ## Deutsch
 
 ## Order-service
@@ -240,3 +267,32 @@ Open-api Service :
 
 http://localhost:8081/swagger-ui/index.html
 http://localhost:8081/v3/api-docs
+
+## Lokale CI-Pipeline (simuliert)
+
+Dieses Projekt enthält eine einfache lokale Pipeline, um ein CI/CD-Setup zu simulieren (Build, Tests und Start mit unterschiedlichen Profilen), ohne Jenkins oder Azure DevOps zu benötigen.
+
+Die Skripte befinden sich im Ordner `ci/` und sollen aus dem Projektwurzelverzeichnis ausgeführt werden.
+
+Beispielbefehle (PowerShell unter Windows):
+
+Nur Build:
+
+```
+.\ci\build.ps1
+```
+Komplette Pipeline ausführen (Build + Tests):
+```
+.\ci\pipeline.ps1
+```
+Service mit dem Profil dev starten:
+```
+.\ci\run-dev.ps1
+```
+
+Service mit dem Profil prod starten:
+```
+.\ci\run-prod.ps1
+```
+
+Die Skripte verwenden die Umgebungsvariable SPRING_PROFILES_ACTIVE, um das aktive Profil auszuwählen (z. B. dev oder prod). Dadurch wird simuliert, wie unterschiedliche Umgebungen in einer realen CI/CD-Pipeline konfiguriert würden.
