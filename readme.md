@@ -7,10 +7,8 @@
 
 ## Order-service
 
-`order-service` is a backend microservice for a fictional e-commerce platform.  
-Its responsibility is to manage standard customer orders for an online shop: 
-receiving new orders, exposing their status, and acting as the main entry point 
-for order-related operations.
+`order-service` is a backend microservice for a fictional e-commerce platform. Its responsibility is to manage the lifecycle of confirmed customer orders after 
+checkout: storing newly confirmed orders, exposing their status, and acting as a stable backend API for other services and backoffice tools.
 
 ## Business context and responsibilities
 
@@ -26,6 +24,8 @@ Within a typical e-commerce architecture, `order-service` would:
     - payment-service (to validate and confirm payments)
     - inventory-service (to reserve and release stock)
     - notification-service (to send emails or messages to the customer)
+    - checkout-service (to receive confirmed orders via HTTP once the cart is checked out)
+  
 
 ## Technologies
 
@@ -152,9 +152,9 @@ The scripts use the environment variable SPRING_PROFILES_ACTIVE to select the ac
 ## Order-service
 
 `order-service` ist ein Backend-Microservice für eine fiktive E-Commerce-Plattform.
-Seine Aufgabe ist es, Standardbestellungen für einen Online-Shop zu verwalten:
-neue Bestellungen entgegenzunehmen, ihren Status bereitzustellen und als zentraler 
-Einstiegspunkt für alle bestellbezogenen Vorgänge zu dienen.
+Seine Aufgabe ist es, den Leebenszyklus bestätigter Kundenbestellungen nach dem Checkout zu
+verwalten: neu bestätigte Bestellungen zu speichern, ihre Status bereitzustellen und als
+stabile Backend-API für andere Services und Backoffice-Toos zu dienen.
 
 
 ## Business context and responsibilities
@@ -171,6 +171,7 @@ In einer typischen E-Commerce-Architektur würde der`order-service`:
   - payment-service (um Zahlungen zu prüfen und zu bestätigen)
   - inventory-service (um Lagerbestand zu reservieren und freizugeben)
   - notification-service (um E-Mails oder Nachrichten an den Kunden zu senden)
+  - chekcout-service (um bestätigte Bestellungen per HTTP zu erhalten, sobald der Warenkorb ausgechekt wurde)
 
 ## Technologien
 
@@ -242,7 +243,7 @@ Metriken werden über Spring Boot Actuator bereitgestellt:
 - `GET /actuator/metrics`
 - `GET /actuator/metrics/http.server.requests`
 
-Beispiel  (PowerShell):
+Beispiel (PowerShell):
 
 ```powershell
 curl.exe -i http://localhost:8081/api/order/demo
