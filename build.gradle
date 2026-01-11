@@ -2,7 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.5.7'
 	id 'io.spring.dependency-management' version '1.1.7'
-	id 'org.springframework.cloud.contract' version '4.3.0'
+//	id 'org.springframework.cloud.contract' version '4.3.0'
 }
 
 group = 'com.stark'
@@ -34,14 +34,21 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
+	implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+
 
 	implementation 'net.logstash.logback:logstash-logback-encoder:7.4'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
+	//testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+
 }
 
 dependencyManagement {
@@ -50,12 +57,12 @@ dependencyManagement {
 	}
 }
 
-contracts {
-}
-
-tasks.named('contractTest') {
-	useJUnitPlatform()
-}
+//contracts {
+//}
+//
+//tasks.named('contractTest') {
+//	useJUnitPlatform()
+//}
 
 tasks.named('test') {
 	useJUnitPlatform()

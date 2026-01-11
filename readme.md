@@ -36,6 +36,35 @@ Lombok
 springdoc-openapi (Swagger UI)  
 JUnit 5, Spring Boot Test
 
+## Business 
+
+The lifecycle of an order is modelled via the `OrderStatus` enum.  
+For this service, the initial set of states is:
+
+- `CONFIRMED` :: The order has been accepted after a successful checkout
+- `PAID` :: The payment has been fully settled or captured
+- `SHIPPED` :: The order has been handed over to the carrier
+- `CANCELLED` :: The order has been cancelled before shipping
+
+More states (for example `DELIVERED`, `RETURNED`) can be added later if the business requirements evolve.
+
+#### Order factory method
+
+Instead of constructing orders directly via a public constructor, the domain exposes a factory method:
+
+```
+Order order = Order.createNew(customerId, items);
+```
+This factory method centralises the rules for creating a new order:
+- generates a new UUID for the order id
+- sets the initial OrderStatus (for example CONFIRMED)
+- calculates totalAmount from the list of OrderItems
+- sets createdAt to the current time
+
+By keeping this logic inside the Order class, the service ensures that every 
+newly created order respects the same invariants, and the application code 
+using the domain remains simple and expressive.
+
 ## Configuration
 
 This service reads part of its configuration from a Config Server.
@@ -181,6 +210,35 @@ Spring Cloud Config Client
 Lombok  
 springdoc-openapi (Swagger UI)  
 JUnit 5, Spring Boot Test
+
+## Geschäft
+
+Der Lebenszyklus einer Bestellung wird über das Enum `OrderStatus` modelliert.  
+Für diesen Service ist der initiale Satz von Zuständen:
+
+- `CONFIRMED` :: die Bestellung wurde nach einem erfolgreichen Checkout angenommen
+- `PAID` :: die Zahlung wurde vollständig abgewickelt bzw. belastet
+- `SHIPPED` :: die Bestellung wurde an den Transportdienst übergeben
+- `CANCELLED` :: die Bestellung wurde vor dem Versand storniert
+
+Weitere Zustände (zum Beispiel `DELIVERED`, `RETURNED`) können später ergänzt werden, wenn sich die Geschäftsanforderungen weiterentwickeln.
+
+#### Factory-Methode in Order
+
+Anstatt Bestellungen direkt über einen öffentlichen Konstruktor zu erzeugen, stellt die Domäne eine Factory-Methode bereit:
+
+```
+Order order = Order.createNew(customerId, items);
+```
+Diese Factory-Methode bündelt die Regeln für das Anlegen einer neuen Bestellung:
+- Erzeugt eine neue UUID für die Bestell-ID
+- Setzt den initialen OrderStatus (zum Beispiel CONFIRMED)
+- Berechnet totalAmount aus der Liste der OrderItems 
+- Setzt createdAt auf den aktuellen Zeitpunkt
+
+Durch diese Logik innerhalb der Klasse Order wird sichergestellt, 
+dass jede neu erzeugte Bestellung die gleichen Invarianten erfüllt und der 
+Anwendungscode, der die Domäne verwendet, einfach und aussagekräftig bleibt.
 
 
 ## Konfiguration
