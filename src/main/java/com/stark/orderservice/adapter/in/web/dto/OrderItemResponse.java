@@ -1,4 +1,4 @@
-package com.stark.orderservice.dto.response;
+package com.stark.orderservice.adapter.in.web.dto;
 
 import java.math.BigDecimal;
 

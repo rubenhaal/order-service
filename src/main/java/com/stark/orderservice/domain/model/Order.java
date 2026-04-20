@@ -1,4 +1,4 @@
-package com.stark.orderservice.domain;
+package com.stark.orderservice.domain.model;
 
 import java.math.BigDecimal;
 import java.time.Instant;

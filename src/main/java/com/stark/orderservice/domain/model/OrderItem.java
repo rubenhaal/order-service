@@ -1,8 +1,9 @@
-package com.stark.orderservice.domain;
+package com.stark.orderservice.domain.model;
 
 import lombok.Data;
 
 import java.math.BigDecimal;
+
 @Data
 public class OrderItem {
 

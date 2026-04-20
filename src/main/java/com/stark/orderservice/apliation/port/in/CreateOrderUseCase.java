@@ -1,10 +1,10 @@
-package com.stark.orderservice.service;
+package com.stark.orderservice.apliation.port.in;
 
-import com.stark.orderservice.domain.Order;
-import com.stark.orderservice.domain.OrderItem;
-import com.stark.orderservice.dto.request.OrderRequest;
-import com.stark.orderservice.dto.response.OrderResponse;
-import com.stark.orderservice.mappers.OrderMapper;
+import com.stark.orderservice.domain.model.Order;
+import com.stark.orderservice.domain.model.OrderItem;
+import com.stark.orderservice.adapter.in.web.dto.OrderRequest;
+import com.stark.orderservice.adapter.in.web.dto.OrderResponse;
+import com.stark.orderservice.adapter.in.web.mappers.OrderMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class OrderService {
+public class CreateOrderUseCase {
     private final OrderMapper mapper;
 
     public OrderResponse createOrder(OrderRequest orderRequest) {

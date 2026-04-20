@@ -1,10 +1,11 @@
 package com.stark.orderservice.service;
 
-import com.stark.orderservice.domain.OrderStatus;
-import com.stark.orderservice.dto.request.OrderItemRequest;
-import com.stark.orderservice.dto.request.OrderRequest;
-import com.stark.orderservice.dto.response.OrderResponse;
-import com.stark.orderservice.mappers.OrderMapper;
+import com.stark.orderservice.apliation.port.in.CreateOrderUseCase;
+import com.stark.orderservice.domain.model.OrderStatus;
+import com.stark.orderservice.adapter.in.web.dto.OrderItemRequest;
+import com.stark.orderservice.adapter.in.web.dto.OrderRequest;
+import com.stark.orderservice.adapter.in.web.dto.OrderResponse;
+import com.stark.orderservice.adapter.in.web.mappers.OrderMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;
@@ -18,13 +19,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
-class OrderServiceTest {
+class CreateOrderUseCaseTest {
 
 
     @Spy
     private final OrderMapper mapper = Mappers.getMapper(OrderMapper.class);
     @InjectMocks
-    private OrderService service;
+    private CreateOrderUseCase service;
 
 
     @Test

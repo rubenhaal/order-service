@@ -1,6 +1,6 @@
-package com.stark.orderservice.dto.response;
+package com.stark.orderservice.adapter.in.web.dto;
 
-import com.stark.orderservice.domain.OrderStatus;
+import com.stark.orderservice.domain.model.OrderStatus;
 
 import java.math.BigDecimal;
 import java.time.Instant;
