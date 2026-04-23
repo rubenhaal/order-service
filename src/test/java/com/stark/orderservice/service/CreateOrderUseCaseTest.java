@@ -1,6 +1,6 @@
 package com.stark.orderservice.service;
 
-import com.stark.orderservice.apliation.port.in.CreateOrderUseCase;
+import com.stark.orderservice.application.port.in.CreateOrderUseCase;
 import com.stark.orderservice.domain.model.OrderStatus;
 import com.stark.orderservice.adapter.in.web.dto.OrderItemRequest;
 import com.stark.orderservice.adapter.in.web.dto.OrderRequest;
