@@ -1,6 +1,6 @@
-package com.stark.orderservice.controller;
+package com.stark.orderservice.adapter.in.web;
 
-import com.stark.orderservice.config.OrderProperties;
+import com.stark.orderservice.application.config.OrderProperties;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

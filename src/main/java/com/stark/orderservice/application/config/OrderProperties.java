@@ -1,4 +1,4 @@
-package com.stark.orderservice.config;
+package com.stark.orderservice.application.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

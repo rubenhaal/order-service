@@ -1,5 +1,6 @@
 package com.stark.orderservice.observability;
 
+import com.stark.orderservice.adapter.in.filter.TraceIdFilter;
 import jakarta.servlet.FilterChain;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
